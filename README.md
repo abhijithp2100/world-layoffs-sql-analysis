@@ -10,6 +10,7 @@ The objective was to transform raw, inconsistent data into a structured, analysi
 
 ## Project Structure
 
+```
 world-layoffs-sql-analysis/
 │
 ├── data/
@@ -21,6 +22,8 @@ world-layoffs-sql-analysis/
 │   └── testing_queries.sql
 │
 └── README.md
+```
+
 
 ---
 
