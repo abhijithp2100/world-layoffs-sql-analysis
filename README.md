@@ -1,10 +1,24 @@
-# World Layoffs SQL Analysis
+# World Layoffs Data Analysis (2020–2023)
 
-## Project Overview
+## Executive Summary
 
 This project performs end-to-end data cleaning and exploratory data analysis (EDA) on a global layoffs dataset using MySQL.
 
-The objective was to transform raw, inconsistent data into a structured, analysis-ready dataset and uncover meaningful trends across companies, industries, countries, and time.
+The analysis covers **383,659 layoffs across 1,995 recorded events (2020–2023)** and identifies structural workforce correction trends following the COVID-19 pandemic.
+
+---
+
+## Problem Statement
+
+Between 2020 and 2023, global markets experienced significant workforce reductions.
+
+This project aims to:
+
+- Analyze layoff trends over time  
+- Identify the most impacted companies, industries, and countries  
+- Measure year-over-year changes  
+- Detect structural economic patterns post-pandemic  
+- Quantify overall workforce impact  
 
 ---
 
@@ -24,73 +38,132 @@ world-layoffs-sql-analysis/
 └── README.md
 ```
 
+---
+
 
 ---
 
-## Phase 1: Data Cleaning
+# Data Cleaning & Preparation
 
-Performed structured data cleaning including:
+The raw dataset contained duplicate records, inconsistent categorical values, blank fields, and incorrect data types.
 
-- Created staging tables to preserve raw data
-- Removed duplicate records using ROW_NUMBER()
-- Standardized inconsistent values (company, industry, country)
-- Converted text-based dates to DATE format
-- Handled missing and blank values using self-joins
-- Removed rows with no analytical relevance
-- Validated cleaning using dedicated testing queries
+## Cleaning Actions Performed
 
-The cleaned dataset is stored in:
+- Created a staging table to preserve raw dataset integrity  
+- Removed duplicate records (2,361 → 1,995 rows) using ROW_NUMBER()  
+- Standardized categorical fields (industry, country, stage)  
+- Converted `date` column from TEXT to proper DATE data type  
+- Replaced blank values with NULL  
+- Populated missing industry values using self-join logic  
+- Removed records lacking layoff metrics  
+- Applied transaction control to ensure safe transformations  
 
-layoffs_staging2
-
----
-
-## Phase 2: Exploratory Data Analysis (EDA)
-
-Key analyses performed:
-
-- Maximum single layoff event
-- Total layoffs across dataset
-- Layoffs by company
-- Layoffs by industry
-- Layoffs by country
-- Layoffs by company stage
-- Yearly layoff trends
-- Monthly layoff trends
-- Rolling cumulative layoffs
-- Top 5 companies per year using DENSE_RANK()
+Result: A clean, analysis-ready dataset with validated metrics and consistent structure.
 
 ---
 
-## Tools and Concepts Used
+# Dataset Overview
 
-- MySQL
-- CTEs
-- Window Functions (ROW_NUMBER, DENSE_RANK)
-- Aggregate Functions
-- Date Functions (YEAR, DATE_FORMAT)
-- Data Validation Techniques
+- Total records: 1,995 layoff events  
+- Total employees laid off: 383,659  
+- Time period: March 11, 2020 – March 6, 2023  
+- Total columns: 9  
 
 ---
 
-## Key Outcomes
+# Key Insights
 
-- Cleaned and structured dataset ready for advanced analysis
-- Identified trends in global layoffs across industries and time
-- Demonstrated a complete SQL data workflow:
-  Raw Data → Cleaning → Validation → Analysis
+## Largest Single Layoff Event
+
+- Google (2023): 12,000 employees  
+
+## Complete Company Shutdowns
+
+- 116 companies recorded 100% workforce layoffs  
+
+## Company with Highest Total Layoffs
+
+- Amazon: 18,150 employees  
+
+## Most Impacted Industry
+
+- Consumer industry: 45,182 layoffs (11.78% of total)
+
+Industries repeatedly impacted:
+
+- Transportation  
+- Travel  
+- Finance  
+- Retail  
+- Food  
+
+## Most Impacted Country
+
+- United States: 256,559 layoffs  
+
+## Most Severe Year
+
+- 2022: 160,661 layoffs  
+
+Year-over-Year Change:
+
+- 2020 → 2021: -65,175 (stabilization phase)  
+- 2021 → 2022: +144,838 (major correction phase)  
+
+## Early 2023 Spike
+
+- January 2023 alone: 84,714 layoffs  
+- Approximately 78% of total 2022 layoffs  
 
 ---
 
-## Dataset
+# Advanced Analysis Performed
 
-- Global layoffs dataset (CSV format)
-- Stored in the /data directory
-- Used for educational and analytical purposes
+- Rolling monthly cumulative totals  
+- 3-month moving average  
+- Year-over-year growth analysis  
+- Top 5 companies per year  
+- Top 5 industries per year  
+- Industry percentage contribution  
 
 ---
 
-## Author
+# Economic Interpretation
 
-Abhijith P
-SQL | Data Analytics
+The data reflects three distinct economic phases:
+
+Phase 1 — Pandemic Shock (2020)  
+Initial disruption due to global lockdowns.
+
+Phase 2 — Stabilization (2021)  
+Temporary recovery as markets adjusted.
+
+Phase 3 — Structural Correction (2022–2023)  
+Sharp increase in layoffs driven by:
+- Pandemic-era overhiring  
+- Technology valuation corrections  
+- Funding slowdowns  
+- Macroeconomic tightening  
+
+The 2022–2023 wave appears structural rather than purely pandemic-driven.
+
+---
+
+# Skills Demonstrated
+
+- SQL Data Cleaning  
+- Window Functions (ROW_NUMBER, LAG, DENSE_RANK)  
+- Common Table Expressions (CTEs)  
+- Time Series Analysis  
+- Rolling Aggregations  
+- Moving Averages  
+- Analytical Interpretation  
+- Business Insight Extraction  
+
+---
+
+# Author
+
+Abhijith P  
+SQL | Data Analysis | Exploratory Projects  
+
