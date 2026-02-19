@@ -28,7 +28,10 @@ This project aims to:
 world-layoffs-sql-analysis/
 │
 ├── data/
-│   └── layoffs.csv
+│   ├── cleaned_data
+│         └── layoffs_staging2.csv
+│   ├── raw_data
+│         └── layoffs.csv
 │
 ├── scripts/
 │   ├── 01_data_cleaning.sql
